@@ -55,12 +55,12 @@ export class LoginComponent {
       (resp) => {
         if (this.loginForm.get('remember')?.value) {
           localStorage.setItem('email', this.loginForm.get('email')?.value);
-          this.ngZone.run(() => {
-            this.router.navigateByUrl('/');
-          });
         } else {
           localStorage.removeItem('email');
         }
+        this.ngZone.run(() => {
+          this.router.navigateByUrl('/');
+        });
       },
       (err) => {
         Swal.fire('Error', err.error.msg, 'error');
